@@ -10,22 +10,26 @@ if os.name == 'nt':
 else:
   import tty, termios
 
-VIRAT_MAX_LIN_VEL = 1.00
-VIRAT_MAX_ANG_VEL = 3.00
 
-LIN_VEL_STEP_SIZE = 0.1
-ANG_VEL_STEP_SIZE = 0.2
+VIRAT_MAX_LIN_VEL = 2.00
+VIRAT_MAX_ANG_VEL = 2.00
+
+LIN_VEL_STEP_SIZE = 0.2
+ANG_VEL_STEP_SIZE = 0.1
+
 
 msg = """
+
 Control Our Virat!
 ---------------------------
+
 Moving around:
         w
    a    s    d
         x
 
-w/x : increase/decrease linear velocity (Burger : ~ 0.22, Waffle and Waffle Pi : ~ 0.26)
-a/d : increase/decrease angular velocity (Burger : ~ 2.84, Waffle and Waffle Pi : ~ 1.82)
+w/x : increase/decrease linear velocity 
+a/d : increase/decrease angular velocity
 
 space key, s : force stop
 
@@ -87,7 +91,7 @@ if __name__=="__main__":
         settings = termios.tcgetattr(sys.stdin)
 
     rospy.init_node('virat_teleop')
-    pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
+    pub = rospy.Publisher('virat/cmd_vel', Twist, queue_size=10)
 
 
     status = 0
