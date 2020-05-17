@@ -10,11 +10,11 @@ if os.name == 'nt':
 else:
   import tty, termios
 
-VIRAT_MAX_LIN_VEL = 0.22
-VIRAT_MAX_ANG_VEL = 2.84
+VIRAT_MAX_LIN_VEL = 1.00
+VIRAT_MAX_ANG_VEL = 3.00
 
-LIN_VEL_STEP_SIZE = 0.01
-ANG_VEL_STEP_SIZE = 0.1
+LIN_VEL_STEP_SIZE = 0.1
+ANG_VEL_STEP_SIZE = 0.2
 
 msg = """
 Control Our Virat!
