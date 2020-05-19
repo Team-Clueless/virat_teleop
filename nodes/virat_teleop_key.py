@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 import rospy
 from geometry_msgs.msg import Twist
 import sys, select, os
@@ -90,8 +89,8 @@ if __name__=="__main__":
     if os.name != 'nt':
         settings = termios.tcgetattr(sys.stdin)
 
-    rospy.init_node('virat_teleop')
-    pub = rospy.Publisher('virat/cmd_vel', Twist, queue_size=10)
+    rospy.init_node('virat_teleop_node')
+    pub = rospy.Publisher('/virat/cmd_vel', Twist, queue_size=10)
 
 
     status = 0
@@ -102,35 +101,41 @@ if __name__=="__main__":
 
     try:
         print(msg)
-        while(1):
+        while True:
             key = getKey()
+
             if key == 'w' :
                 target_linear_vel = checkLinearLimitVelocity(target_linear_vel + LIN_VEL_STEP_SIZE)
-                status = status + 1
+                status += 1
                 print(vels(target_linear_vel,target_angular_vel))
+
             elif key == 'x' :
                 target_linear_vel = checkLinearLimitVelocity(target_linear_vel - LIN_VEL_STEP_SIZE)
-                status = status + 1
+                status += 1
                 print(vels(target_linear_vel,target_angular_vel))
+
             elif key == 'a' :
                 target_angular_vel = checkAngularLimitVelocity(target_angular_vel - ANG_VEL_STEP_SIZE)
-                status = status + 1
+                status += 1
                 print(vels(target_linear_vel,target_angular_vel))
+
             elif key == 'd' :
                 target_angular_vel = checkAngularLimitVelocity(target_angular_vel + ANG_VEL_STEP_SIZE)
-                status = status + 1
+                status += 1
                 print(vels(target_linear_vel,target_angular_vel))
+
             elif key == ' ' or key == 's' :
                 target_linear_vel   = 0.0
                 control_linear_vel  = 0.0
                 target_angular_vel  = 0.0
                 control_angular_vel = 0.0
                 print(vels(target_linear_vel, target_angular_vel))
+
             else:
                 if (key == '\x03'):
                     break
 
-            if status == 20 :
+            if status == 15 :
                 print(msg)
                 status = 0
 
