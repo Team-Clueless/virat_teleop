@@ -54,7 +54,7 @@ def getKey():
     return key
 
 def vels(target_linear_vel, target_angular_vel):
-    return "currently:\tlinear vel %s\t angular vel %s " % (target_linear_vel,target_angular_vel)
+    return "currently:\tlinear vel %s\t angular vel %s" % (target_linear_vel,target_angular_vel)
 
 def makeSimpleProfile(output, input, slop):
     if input > output:
@@ -130,6 +130,7 @@ if __name__=="__main__":
                 target_angular_vel  = 0.0
                 control_angular_vel = 0.0
                 print(vels(target_linear_vel, target_angular_vel))
+                status += 1
 
             else:
                 if (key == '\x03'):
