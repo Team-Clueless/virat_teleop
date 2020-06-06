@@ -14,4 +14,4 @@ roslaunch virat_teleop virat_teleop_key.launch
 References
 ----------
 
-* [Turtlebot3_teleop](https://github.com/ROBOTIS-GIT/turtlebot3/blob/master/turtlebot3_teleop/nodes/turtlebot3_teleop_key)
+* [Turtlebot3_teleop - GitHub](https://github.com/ROBOTIS-GIT/turtlebot3/blob/master/turtlebot3_teleop/nodes/turtlebot3_teleop_key)
